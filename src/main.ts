@@ -1,13 +1,18 @@
+// Bootstrap
+import bootstrap from '@/bootstrap';
+
 // Helpers
 import { calculationNumberOfLoop, countdown, enableExitOnEsc, runActions } from '@/helper.js';
 
 // Shared State
-import { getLoopRunning, setLoopRunning, setNewAbortController } from '@/shared-state';
+import { getLoopRunning, setLoopRunning, setNewAbortController } from '@/shared-state.js';
 
 // Utils
 import { consoleLineSpacing } from '@/utils.js';
 
 (async function main() {
+  await bootstrap();
+
   setLoopRunning(true);
 
   enableExitOnEsc();

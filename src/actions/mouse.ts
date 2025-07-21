@@ -1,5 +1,5 @@
-// Robot js
-var robot = require('robotjs');
+// Robot Js
+import * as robot from 'robotjs';
 
 // Interfaces
 import { IMouseFnParams } from '@/interfaces/actions.js';

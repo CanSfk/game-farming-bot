@@ -1,4 +1,4 @@
-export type TSettings = {
+export type TSetting = {
   isLoop: boolean;
   countOfLoop: number;
   secondOfCountdown: number;

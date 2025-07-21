@@ -7,8 +7,9 @@ export default defineConfig({
   outDir: 'build',
   sourcemap: true,
   clean: true,
-  target: 'node18',
+  target: 'es2022',
   dts: true,
+  minify: false,
   esbuildOptions(options) {
     options.alias = {
       '@': './src',

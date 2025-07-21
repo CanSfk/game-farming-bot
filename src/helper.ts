@@ -1,35 +1,13 @@
-import fs from 'fs';
-import path from 'path';
 import * as readline from 'readline';
 
 // Utils
 import { consoleLineSpacing, wait } from '@/utils.js';
 
-// Types
-import { TSettings } from '@/types/settings.js';
-import { TActions } from '@/types/actions.js';
-
 // Mappings
 import { ACTION_MAP } from '@/mappings/action-map.js';
 
 // Shared State
-import { getAbortSignal, getLoopRunning, setAbortController, setLoopRunning } from '@/shared-state';
-
-const isPkg = typeof process.pkg !== 'undefined';
-
-let actionsJsonPath: string;
-let settingsJsonPath: string;
-
-if (isPkg) {
-  actionsJsonPath = path.join(path.dirname(process.execPath), 'jsons', 'actions.json');
-  settingsJsonPath = path.join(path.dirname(process.execPath), 'jsons', 'settings.json');
-} else {
-  actionsJsonPath = path.join(process.cwd(), 'src', 'jsons', 'actions.json');
-  settingsJsonPath = path.join(process.cwd(), 'src', 'jsons', 'settings.json');
-}
-
-var actionsJson = JSON.parse(fs.readFileSync(actionsJsonPath, 'utf8'));
-var settingsJson = JSON.parse(fs.readFileSync(settingsJsonPath, 'utf8'));
+import { getAbortSignal, getMacroData, getLoopRunning, getSettingData, setAbortController, setLoopRunning } from '@/shared-state.js';
 
 /**
  * Belirtilen anahtar için tekrar süresi dolmadıysa bekler.
@@ -55,7 +33,7 @@ export const waitIfNeeded = async ({ map, id, timeOfAgain }: IWaitIfNeeded): Pro
  * @returns [number, number] Döngünün başlangıç ve bitiş değerlerini içeren bir tuple.
  */
 export const calculationNumberOfLoop = (): [number, number] => {
-  const settings = settingsJson as TSettings;
+  const settings = getSettingData();
 
   const max = settings.isLoop ? (settings.countOfLoop === 0 ? Infinity : settings.countOfLoop) : 1;
 
@@ -69,7 +47,7 @@ export const calculationNumberOfLoop = (): [number, number] => {
  * @returns {Promise<void>} Aksiyonların tamamlanmasını bekleyen bir Promise.
  */
 export const runActions = async (): Promise<void> => {
-  for (const action of actionsJson as TActions[]) {
+  for (const action of getMacroData()) {
     const fn = ACTION_MAP[action.type];
 
     if (typeof fn !== 'function') continue;
@@ -90,7 +68,7 @@ export const runActions = async (): Promise<void> => {
  * @returns {Promise<void>} Sayimin tamamlanmasını bekleyen bir Promise.
  */
 export const countdown = async (): Promise<void> => {
-  let cnt = (settingsJson as TSettings).secondOfCountdown;
+  let cnt = getSettingData().secondOfCountdown;
 
   console.log(cnt);
 

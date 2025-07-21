@@ -1,5 +1,5 @@
 // Robot Js
-var robot = require('robotjs');
+import robot from 'robotjs';
 
 // Utils
 import { consoleActionMessage } from '@/utils.js';
