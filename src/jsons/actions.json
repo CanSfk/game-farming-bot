@@ -1,0 +1,18 @@
+[
+  { "type": "keyword", "params": { "id": "skill-4", "key": 4, "timeOfAgain": 14000 } },
+  { "type": "delay", "params": { "time": 1100 } },
+  { "type": "keyword", "params": { "id": "skill-2", "key": 2, "timeOfAgain": 3500 } },
+  { "type": "delay", "params": { "time": 1100 } },
+  { "type": "keyword", "params": { "id": "skill-5", "key": 5, "timeOfAgain": 14000 } },
+  { "type": "delay", "params": { "time": 1100 } },
+  { "type": "keyword", "params": { "id": "skill-2", "key": 2, "timeOfAgain": 3500 } },
+  { "type": "delay", "params": { "time": 1100 } },
+  { "type": "keyword", "params": { "id": "skill-2", "key": 2, "timeOfAgain": 3500 } },
+  { "type": "delay", "params": { "time": 1100 } },
+  { "type": "keyword", "params": { "id": "skill-2", "key": 2, "timeOfAgain": 3500 } },
+  { "type": "delay", "params": { "time": 1100 } },
+  { "type": "keyword", "params": { "id": "skill-2", "key": 2, "timeOfAgain": 3500 } },
+  { "type": "delay", "params": { "time": 1100 } },
+  { "type": "keyword", "params": { "id": "skill-3", "key": 3, "timeOfAgain": 3500 } },
+  { "type": "delay", "params": { "time": 1100 } }
+]
