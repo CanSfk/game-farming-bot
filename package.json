@@ -6,7 +6,7 @@
   "bin": "build/main.js",
   "scripts": {
     "build": "tsup",
-    "copy-json": "cp -R ./src/jsons ./build",
+    "copy-json": "cp -R ./src/jsons ./bin",
     "start": "tsup && node build/main.js",
     "pkg": "tsup && pkg .",
     "test": "echo \"Error: no test specified\" && exit 1"
